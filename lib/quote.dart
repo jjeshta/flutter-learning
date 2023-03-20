@@ -1,7 +1,7 @@
 
 class Quote {
-  String? text;
-  String? author;
+  String text;
+  String author;
 
-  Quote({required String this.text, required String this.author});
+  Quote({required this.text, required this.author});
 }
