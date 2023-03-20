@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'quote.dart';
 void main() => runApp(
   MaterialApp(
     home: QuoteList(),
@@ -13,12 +13,12 @@ class QuoteList extends StatefulWidget {
 }
 
 class _QuoteListState extends State<QuoteList> {
-  List<String> quotes = [
-    "Human strength lies in the ability to change yourself. –  Saitama, OnePunch Man",
-    "A dropout will beat a genius through hard work. –  Rock Lee, Naruto",
-    "Forgetting is like a wound. The wound may heal, but it has already left a scar. – Monkey D. Luffy, One Piece",
-    "How can you keep moving forward if you keep regretting the past?  –  Edward Elric, FMA: Brotherhood",
-    "Those painful memories are what help us make it to tomorrow and become stronger.  – Erza Scarlet, Fairy Tail"
+  List<Quote> quotes = [
+    Quote(author: "Saitama, OnePunch Man", text: "Human strength lies in the ability to change yourself."),
+    Quote(author: "Rock Lee, Naruto", text: "A dropout will beat a genius through hard work."),
+    Quote(author: "Monkey D. Luffy, One Piece", text: "Forgetting is like a wound. The wound may heal, but it has already left a scar."),
+    Quote(author: "Edward Elric, FMA: Brotherhood", text: "How can you keep moving forward if you keep regretting the past?"),
+    Quote(author: "Erza Scarlet, Fairy Tail", text: "Those painful memories are what help us make it to tomorrow and become stronger."),
   ];
 
 
@@ -33,7 +33,7 @@ class _QuoteListState extends State<QuoteList> {
       ),
       body: Column(
         children: quotes.map(
-                (quote) => Text(quote)
+                (quote) => Text('${quote.text} – ${quote.author}')
         ).toList(),
       ),
     );
