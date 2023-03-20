@@ -20,6 +20,8 @@ class _QuoteListState extends State<QuoteList> {
     Quote(author: "Monkey D. Luffy, One Piece", text: "Forgetting is like a wound. The wound may heal, but it has already left a scar."),
     Quote(author: "Edward Elric, FMA: Brotherhood", text: "How can you keep moving forward if you keep regretting the past?"),
     Quote(author: "Erza Scarlet, Fairy Tail", text: "Those painful memories are what help us make it to tomorrow and become stronger."),
+    Quote(author: "Juuzou Suzuya, Tokyo Ghoul", text: "“Why should I apologize for being a monster? Has anyone ever apologized for turning me into one?”"),
+
   ];
 
 
@@ -32,11 +34,20 @@ class _QuoteListState extends State<QuoteList> {
         centerTitle: true,
         backgroundColor: Colors.redAccent,
       ),
-      body: Column(
+      body: SingleChildScrollView (
+      child: Column(
         children: quotes.map(
-                (quote) =>  QuoteCard(quote: quote,)
+                (quote) =>  QuoteCard(
+                  quote: quote,
+                  delete: () {
+                    setState(() {
+                      quotes.remove(quote);
+                    });
+                  }
+                )
         ).toList(),
       ),
+      )
     );
   }
 }

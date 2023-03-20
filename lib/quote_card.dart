@@ -4,7 +4,8 @@ import 'quote.dart';
 class QuoteCard extends StatelessWidget {
   //final make the data to be passed in this statelesswidget
   final Quote quote;
-  const QuoteCard({super.key, required this.quote});
+  final void Function()? delete;
+  const QuoteCard({super.key, required this.quote, this.delete});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,7 @@ class QuoteCard extends StatelessWidget {
           padding: const EdgeInsets.all(12.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget> [
+            children:  [
               Text(
                 quote.text,
                 style: TextStyle(
@@ -30,6 +31,8 @@ class QuoteCard extends StatelessWidget {
                     fontSize: 13.0
                 ),
               ),
+              const SizedBox(height: 6.0,),
+              TextButton.icon(onPressed: delete, icon: const Icon(Icons.delete), label: Text("Delete Quote"))
             ],
           ),
         )
