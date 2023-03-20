@@ -1,130 +1,40 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MaterialApp(
-    home: OtakuCard()
-  ));
-}
+void main() => runApp(
+  MaterialApp(
+    home: QuoteList(),
+  )
+);
 
-class OtakuCard extends StatefulWidget {
-  const OtakuCard({Key? key}) : super(key: key);
 
+class QuoteList extends StatefulWidget {
   @override
-  State<OtakuCard> createState() => _OtakuCardState();
+  State<QuoteList> createState() => _QuoteListState();
 }
 
-class _OtakuCardState extends State<OtakuCard> {
-  int otakuLevel = 0;
+class _QuoteListState extends State<QuoteList> {
+  List<String> quotes = [
+    "Human strength lies in the ability to change yourself. –  Saitama, OnePunch Man",
+    "A dropout will beat a genius through hard work. –  Rock Lee, Naruto",
+    "Forgetting is like a wound. The wound may heal, but it has already left a scar. – Monkey D. Luffy, One Piece",
+    "How can you keep moving forward if you keep regretting the past?  –  Edward Elric, FMA: Brotherhood",
+    "Those painful memories are what help us make it to tomorrow and become stronger.  – Erza Scarlet, Fairy Tail"
+  ];
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[900],
+      backgroundColor: Colors.grey[200],
       appBar: AppBar(
-        title: const Text("Otaku ID Card"),
+        title: Text('Anime Quotes'),
         centerTitle: true,
-        backgroundColor: Colors.grey[850],
-        elevation: 0.0,
+        backgroundColor: Colors.redAccent,
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: (){
-          setState(() {
-            otakuLevel++;
-          });
-        },
-        child: const Icon(Icons.add),
-        backgroundColor: Colors.grey[800],
-      ),
-      body: Padding(
-        padding: EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-             const Center(
-               child: CircleAvatar(
-                 backgroundImage: AssetImage('assets/uzumaki.jpg'),
-                 radius: 40.0,
-
-               )
-             ) ,
-            Divider(
-              height: 90.0,
-              color: Colors.grey.shade800,
-            ),
-            const Text(
-              'NAME',
-              style: TextStyle(
-                color: Colors.grey,
-                letterSpacing: 2.0,
-              ),
-            ),
-            const SizedBox(height: 10.0),
-            const Text(
-              'Uzumaki Naruto',
-              style: TextStyle(
-                color: Colors.amberAccent,
-                fontSize: 28.0,
-                letterSpacing: 2.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 30.0),
-            const Text(
-              'ANIME',
-              style: TextStyle(
-                color: Colors.grey,
-                letterSpacing: 2.0,
-              ),
-            ),
-            const SizedBox(height: 10.0),
-            const Text(
-              'Naruto Shippuden',
-              style: TextStyle(
-                color: Colors.amberAccent,
-                fontSize: 28.0,
-                letterSpacing: 2.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 30.0),
-            const Text(
-              'LEVEL',
-              style: TextStyle(
-                color: Colors.grey,
-                letterSpacing: 2.0,
-              ),
-            ),
-            const SizedBox(height: 10.0),
-            Text(
-              '$otakuLevel',
-              style: const TextStyle(
-                color: Colors.amberAccent,
-                fontSize: 28.0,
-                letterSpacing: 2.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 30.0),
-            Row(
-              children: <Widget> [
-                Icon(
-                  Icons.email,
-                  color: Colors.grey[400]
-                ),
-                const SizedBox(width: 10.0),
-                const Text(
-                  'naruto.uzumaki@konoha.com',
-                  style: TextStyle(
-                    color: Colors.grey,
-                    fontSize: 18.0,
-                    letterSpacing: 2.0
-                  ),
-
-                )
-              ],
-            ),
-          ],
-        ),
+      body: Column(
+        children: quotes.map(
+                (quote) => Text(quote)
+        ).toList(),
       ),
     );
   }
